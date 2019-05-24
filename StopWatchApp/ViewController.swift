@@ -51,6 +51,7 @@ class ViewController: UIViewController {
         playButton.isHidden = false
         resetButton.isHidden = false
         
+        //Code for timer
 
         currentTime = 0
         minutesLabel.text = "0"
