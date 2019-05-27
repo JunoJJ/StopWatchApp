@@ -81,7 +81,7 @@ class ViewController: UIViewController {
         resetButton.isHidden = false
         pauseButton.isHidden = true
         
-        print("something")
+        printf("something")
         
     }
 
