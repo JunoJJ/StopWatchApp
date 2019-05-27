@@ -31,16 +31,19 @@ class StopWatchAppUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         
+        
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
         let app = XCUIApplication()
         let pauseButton = app.buttons["Pause"]
         pauseButton.tap()
         
         let playButton = app.buttons["Play"]
         playButton.tap()
+        app.otherElements.containing(.staticText, identifier:"Stop Watch").element.tap()
         playButton.tap()
         pauseButton.tap()
         app.buttons["Reset"].tap()
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     print("UI TEST")
     }
     
