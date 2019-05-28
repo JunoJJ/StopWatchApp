@@ -38,11 +38,7 @@ class ViewController: UIViewController {
         pauseButton.isHidden = true
         playButton.isHidden = false
         resetButton.isHidden = false
-        
         stopWatchTimer.invalidate()
-
-
-        
     }
     
     @IBAction func resetButtonAction(_ sender: Any) {
