@@ -7,7 +7,11 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macos-latest'
+  vmImage: 'macOS-10.13'
+variables:
+  scheme: ''
+  sdk: 'iphoneos'
+  configuration: 'Release'
 
 steps:
 - task: Xcode@5
@@ -15,6 +19,13 @@ steps:
     actions: 'build'
     scheme: 'StopWatchApp'
     sdk: 'iphoneos'
-    configuration: 'Release'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
+    configuration: '$(configuration)'
     xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
+    exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+    packageApp: false
+
+- task: CopyFiles@2
+  inputs:
+    contents: '**/*.ipa'
+    targetFolder: '$(build.artifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
