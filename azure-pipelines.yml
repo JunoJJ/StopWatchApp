@@ -21,8 +21,4 @@ steps:
     configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
-- task: CopyFiles@2
-  inputs:
-    contents: '**/*.ipa'
-    targetFolder: '$(build.*.xcodeproj/project.xcworkspace)'
 - task: PublishBuildArtifacts@1
