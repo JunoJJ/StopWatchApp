@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     var currentTime = 0
     var stopWatchTimer = Timer()
-    
+    let timeInterval = 0.1
     
     //IBOutlets
     @IBOutlet weak var minutesLabel: UILabel!
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         pauseButton.isHidden = false
         resetButton.isHidden = false
 
-        stopWatchTimer = Timer.scheduledTimer(timeInterval:0.1, target: self, selector: (#selector(ViewController.timeUpdate)), userInfo: nil, repeats: true)
+        stopWatchTimer = Timer.scheduledTimer(timeInterval:timeInterval, target: self, selector: (#selector(ViewController.timeUpdate)), userInfo: nil, repeats: true)
         
     }
     @IBAction func pauseButtonAction(_ sender: Any) {

@@ -11,43 +11,67 @@ import XCTest
 
 class StopWatchAppTests: XCTestCase {
     
-    var viewController: ViewController!
+    var viewControllerForUnitTest: ViewController!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        viewController = ViewController()
+        viewControllerForUnitTest = ViewController()
         
         
-
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.viewControllerForUnitTest = storyboard.instantiateViewController(withIdentifier: "MyViewController") as! ViewController
+        
+        self.viewControllerForUnitTest.loadView()
+        self.viewControllerForUnitTest.viewDidLoad()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        
-        viewController = nil
+        viewControllerForUnitTest = nil
         super.tearDown()
+    }
+    
+    func testViewcontrollerButton() {
+        
+        XCTAssertNotNil(self.viewControllerForUnitTest.pauseButton, "No Pause Button")
+    }
+    func testPlayButtonInvokesActionMethodWhenTapped() {
+        
+        _ = self.viewControllerForUnitTest.playButton.actions(forTarget: self.viewControllerForUnitTest, forControlEvent: UIControlEvents.touchUpInside)
+        _ = self.viewControllerForUnitTest.pauseButton
+        _ = self.viewControllerForUnitTest.playButton
+        
+        //Testcase for checking Play and Pause Button variable
+        if let playString = viewControllerForUnitTest.playButton.titleLabel?.text
+        {
+            XCTAssertEqual(playString, "Play")
+        }
+        if let pauseString = viewControllerForUnitTest.pauseButton.titleLabel?.text {
+            XCTAssertEqual(pauseString, "Pause")
+        }
 
-
+    }
+    
+    
+    func testAfterButtonTap() {
+        
+        let _: UIButton = UIButton()
+        viewControllerForUnitTest.playButton.sendActions(for: UIControlEvents.touchUpInside)
+        
+        
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
         
+        //Testcase for Reset function timer eqaual to zero
+        let testTimer = 0
+        XCTAssertEqual(viewControllerForUnitTest.currentTime, testTimer, "success time is 0")
         
-        //Check Timer
-//        let testTimer = 10
-//        XCTAssertEqual(viewController.currentTime, testTimer, "success time is 0")
-        
+        //Testcase for checking timer interval
+        XCTAssertEqual(viewControllerForUnitTest.timeInterval, 0.1, "success time is 0.1")
 
     }
     
-    //For Boolean
-    func XCTAssertTrue(_ expression: @autoclosure () throws -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line)  {
-        
-    }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
