@@ -21,9 +21,8 @@ steps:
     configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
-- task: VSTest@2
-  displayName: 'Test Cases'
+- task: CopyFiles@2
   inputs:
-    platform: '$(BuildPlatform)'
-    configuration: '$(BuildConfiguration)'
+    contents: '**/*.ipa'
+    targetFolder: '**/*.xcodeproj/project.xcworkspace'
 - task: PublishBuildArtifacts@1
