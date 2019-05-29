@@ -30,5 +30,5 @@ steps:
     targetFolder: '$(Build.ArtifactStagingDirectory))'
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(build.artifactStagingDirectory)'
-    artifactName: drop
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: JunoJJ.StopWatchApp (Build)
