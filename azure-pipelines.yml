@@ -27,7 +27,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: '**/*.ipa'
-    targetFolder: '$(build.artifactStagingDirectory)'
+    targetFolder: '$(Build.ArtifactStagingDirectory))'
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(build.artifactStagingDirectory)'
