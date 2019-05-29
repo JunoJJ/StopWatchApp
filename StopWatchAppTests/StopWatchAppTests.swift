@@ -53,19 +53,15 @@ class StopWatchAppTests: XCTestCase {
     
     
     func testAfterButtonTap() {
-        
         let _: UIButton = UIButton()
         viewControllerForUnitTest.playButton.sendActions(for: UIControlEvents.touchUpInside)
-        
-        
+        print("Play Button Pressed")
     }
     
     func testExample() {
-        
         //Testcase for Reset function timer eqaual to zero
         let testTimer = 0
         XCTAssertEqual(viewControllerForUnitTest.currentTime, testTimer, "success time is 0")
-        
         //Testcase for checking timer interval
         XCTAssertEqual(viewControllerForUnitTest.timeInterval, 0.1, "success time is 0.1")
 
