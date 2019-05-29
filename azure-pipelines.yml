@@ -27,6 +27,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     contents: '**/*.ipa'
+    sourceFolder: '$(System.DefaultWorkingDirectory)'
     targetFolder: '$(Build.ArtifactStagingDirectory))'
 - task: PublishBuildArtifacts@1
   inputs:
