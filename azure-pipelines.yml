@@ -7,8 +7,11 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macos-latest'
-
+  vmImage: 'macOS-10.13'
+variables:
+  scheme: ''
+  sdk: 'iphoneos'
+  configuration: 'Release'
 steps:
 - task: Xcode@5
   inputs:
@@ -18,4 +21,8 @@ steps:
     configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
+- task: CopyFiles@2
+  inputs:
+    contents: '**/*.ipa'
+    targetFolder: '$(build.artifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
